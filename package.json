@@ -1,0 +1,16 @@
+{
+  "name": "git-log-reader",
+  "version": "0.0.1",
+  "description": "Read the git log.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Ryan Harvey",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "should": "^7.1.1"
+  },
+  "dependencies": {}
+}
