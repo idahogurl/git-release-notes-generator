@@ -2,10 +2,12 @@
   "name": "git-log-reader",
   "version": "0.1.0",
   "description": "Read the git log.",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
+  "repository": "rrharvey/git-log-reader",
   "author": "Ryan Harvey",
   "license": "MIT",
   "devDependencies": {
