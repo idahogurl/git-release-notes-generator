@@ -5,19 +5,19 @@ var should = require('should');
 
 describe('format', function () {
   describe('getFormatString', function () {
-    it('should return a format string for the requested fields and delimiter', function () {
-      var str = format.getFormatString(['hash', 'authorName'], '^');
-      str.should.equal('%H^%an');
+    it('should return a format string for the requested fields and delimiters', function () {
+      var str = format.getFormatString(['hash', 'authorName'], '^', '#');
+      str.should.equal('%H^%an#');
     });
 
     it('should ignore fields that do not exist', function () {
-      var str = format.getFormatString(['abbrevHash', 'bogus', 'subject'], '*');
-      str.should.equal('%h*%s');
+      var str = format.getFormatString(['abbrevHash', 'bogus', 'subject'], '*', '|');
+      str.should.equal('%h*%s|');
     });
 
     it('should provide a default delimiter', function () {
       var str = format.getFormatString(['hash', 'authorName']);
-      str.should.equal('%H' + format.DEFAULT_DELIMITER + '%an');
+      str.should.equal('%H' + format.FIELD_DELIMITER + '%an' + format.RECORD_DELIMITER);
     });
 
     it('should provide a default list of fields', function () {
