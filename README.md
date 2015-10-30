@@ -10,7 +10,24 @@ var gitlog = require('git-log-reader');
 
 // commits is an array of commit objects
 var commits = gitlog.read({
-  // options
+  // git fields to extract
+  fields: ['abbrevHash', 'subject', 'body'],
+  // Optional patterns that can match data in git fields. Capture groups in the
+  // matchers regular expression can overwrite existing fields or create new custom fields
+  matchers: [{
+    // Run this pattern on the default git field "subject".
+    // Match an issue number like #123 and add field { issue: 123 }
+    pattern: "#(\\d+)",
+    fields: ['issue']
+  }, {
+    // Use the Angular commit format in the subject field.
+    regexp: /^(\w*)(?:\(([\w\$\.]*)\))?\: (.*)$/,
+    fields: ['type', 'scope', 'subject']
+  }, {
+    // Filter on author name.
+    sourceField: 'authorName',
+    regexp: /Ryan/
+  }]
 });
 ```
 
@@ -53,20 +70,3 @@ Matchers are run in order until a match is found. If no matches are found the
 commit gets filtered out.
 
 > If you specify a pattern make sure you escape backslash characters.
-
-```js
-[{
-  // Run this pattern on the default git field "subject".
-  // Match an issue number like #123 and add field { issue: 123 }
-  pattern: "#(\\d+)",
-  fields: ['issue']
-}, {
-  // Use the Angular commit format in the subject field.
-  regexp: /^(\w*)(?:\(([\w\$\.]*)\))?\: (.*)$/,
-  fields: ['type', 'scope', 'subject', 'body']
-}, {
-  // Filter on author name.
-  sourceField: 'authorName',
-  regexp: /Ryan/
-}]
-```
