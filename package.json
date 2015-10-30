@@ -2,6 +2,7 @@
   "name": "git-log-reader",
   "version": "0.1.0",
   "description": "Read the git log.",
+  "keywords": "git,log,changelog,release,notes",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
