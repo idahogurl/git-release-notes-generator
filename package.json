@@ -1,6 +1,6 @@
 {
   "name": "git-log-reader",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Read the git log.",
   "main": "index.js",
   "scripts": {
