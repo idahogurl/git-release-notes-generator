@@ -2,19 +2,46 @@
   "name": "git-log-reader",
   "version": "0.1.0",
   "description": "Read the git log.",
-  "keywords": "git,log,changelog,release,notes",
+  "keywords": [
+    "git,log,changelog,release,notes"
+  ],
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "format": "prettier-eslint --write **/*.js*"
   },
-  "repository": "rrharvey/git-log-reader",
-  "author": "Ryan Harvey",
-  "license": "MIT",
+  "repository": "idahogurl/git-release-notes-generator",
+  "author": "Rebecca Vest",
   "devDependencies": {
-    "eslint": "^1.7.3",
-    "mocha": "^2.3.3",
-    "should": "^7.1.1"
+    "lint-staged": "^13.0.3",
+    "mocha": "^10.0.0",
+    "prettier-eslint-cli": "^6.0.1",
+    "should": "^13.2.3"
   },
-  "dependencies": {}
+  "husky": {
+    "precommit": "npm run lint-staged"
+  },
+  "lint-staged": {
+    "*.js": "prettier-eslint --write"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
+  },
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "rules": {
+      "no-var": "error",
+      "prefer-const": "error"
+    }
+  }
 }
